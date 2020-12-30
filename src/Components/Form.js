@@ -27,22 +27,23 @@ export default function Form() {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (firstname && lastname && email && password && description) {
-            emailjs.sendForm(process.env.REACT_APP_SEERVICE_ID, process.env.REACT_APP_TEMPLATE_ID, e.target, process.env.REACT_APP_USER_ID)
+            emailjs.sendForm('' + process.env.REACT_APP_SERVICE_ID, '' + process.env.REACT_APP_TEMPLATE_ID, e.target, '' + process.env.REACT_APP_USER_ID)
                 .then((result) => {
                     console.log(result.text);
                     alert(result.text + "! Feedback Capture")
                 }, (error) => {
                     console.log(error.text);
                 });
-            setFirstname(null)
-            setLastname(null)
-            setEmail(null)
-            setPassword(null)
-            setDescription(null)
+
         }
         else {
             alert("Enter All Fields")
         }
+        setFirstname(null)
+        setLastname(null)
+        setEmail(null)
+        setPassword(null)
+        setDescription(null)
 
         e.target.reset();
     }
